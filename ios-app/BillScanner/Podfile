@@ -1,0 +1,8 @@
+platform :ios, '14.0'
+
+target 'BillScanner' do
+  use_frameworks!
+  
+  pod 'GoogleCloudStorage'
+  pod 'Firebase/Storage'
+end

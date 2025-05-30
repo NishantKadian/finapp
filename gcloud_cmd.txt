@@ -1,0 +1,4 @@
+gcloud auth login    
+gcloud auth list       
+gcloud auth application-default login --impersonate-service-account=finapp@wide-cargo-450713-m3.iam.gserviceaccount.com      
+gcloud config set auth/impersonate_service_account finapp@wide-cargo-450713-m3.iam.gserviceaccount.com
