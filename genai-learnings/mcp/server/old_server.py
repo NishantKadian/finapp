@@ -19,37 +19,16 @@ from mcp.server.sse import SseServerTransport
 mcp = FastMCP("wiki")
 
 @mcp.tool()
-def extract_wikipedia_article(url: str) -> str:
+def sum(x: float, y: float) -> float:
     """
-    Retrieves and processes a Wikipedia article from the given URL, extracting
-    the main content and converting it to Markdown format.
+    Sums two numbers.
 
     Usage:
-        extract_wikipedia_article("https://en.wikipedia.org/wiki/Gemini_(chatbot)")
+        sum(1.0, 2.0)
     """
     try:
-        if not url.startswith("http"):
-            raise ValueError("URL must begin with http or https protocol.")
-
-        response = requests.get(url, timeout=8)
-        if response.status_code != 200:
-            raise McpError(
-                ErrorData(
-                    code=INTERNAL_ERROR,
-                    message=f"Unable to access the article. Server returned status: {response.status_code}"
-                )
-            )
-        soup = BeautifulSoup(response.text, "html.parser")
-        content_div = soup.find("div", {"id": "mw-content-text"})
-        if not content_div:
-            raise McpError(
-                ErrorData(
-                    code=INVALID_PARAMS,
-                    message="The main article content section was not found at the specified Wikipedia URL."
-                )
-            )
-        markdown_text = html2text(str(content_div))
-        return markdown_text
+        print("entered the sum function")
+        return x+y
 
     except Exception as e:
         raise McpError(ErrorData(code=INTERNAL_ERROR, message=f"An unexpected error occurred: {str(e)}")) from e

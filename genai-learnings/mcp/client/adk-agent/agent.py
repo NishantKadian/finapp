@@ -36,11 +36,8 @@ async def get_agent_async():
     root_agent = LlmAgent(
         model="gemini-2.0-flash",
         name="assistant",
-        instruction="""Help user extract and summarize the article from wikipedia link.
-        Use the following tools to extract wikipedia article:
-        - extract_wikipedia_article
-
-        Once you retrieve the article, always summarize it in a few sentences for the user.
+        instruction=""" You are a calculator, whenever some mathematical op is requested, you will use the sum tool to calculate the result.
+        You will use the tools provided by the MCP server to answer questions.
         """,
         tools=tools,
     )
